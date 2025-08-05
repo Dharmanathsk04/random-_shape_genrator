@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shape Generator</title>
+  <style>
+    body { text-align:center; font-family:sans-serif; background:#eee; padding:40px; }
+    #shape { margin:30px auto; }
+    button { padding:10px 20px; font-size:16px; }
+  </style>
+</head>
+<body>
+
+  <h2>🎨 Random Shape</h2>
+  <div id="shape"></div>
+  <button onclick="gen()">Generate</button>
+
+  <script>
+    function gen() {
+      const s = document.getElementById('shape');
+      const t = ['square','circle','triangle'][Math.floor(Math.random()*3)];
+      const sz = Math.floor(Math.random()*80)+50;
+      const c = '#'+Math.floor(Math.random()*16777215).toString(16);
+      s.style = '';
+
+      if(t==='square'){
+        s.style=`width:${sz}px;height:${sz}px;background:${c};`;
+      } else if(t==='circle'){
+        s.style=`width:${sz}px;height:${sz}px;background:${c};border-radius:50%;`;
+      } else {
+        s.style=`width:0;height:0;border-left:${sz/2}px solid transparent;border-right:${sz/2}px solid transparent;border-bottom:${sz}px solid ${c};`;
+      }
+    }
+  </script>
+
+</body>
+</html>
